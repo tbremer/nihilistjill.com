@@ -1,0 +1,27 @@
+{
+  "name": "nihilistjill.com",
+  "version": "0.1.0",
+  "description": "nihilistjill.com",
+  "main": "server.js",
+  "scripts": {
+    "start": "babel-node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tbremer/nihilistjill.com.git"
+  },
+  "author": {
+    "name": "Tom Bremer",
+    "email": "tom@tbremer.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tbremer/nihilistjill.com/issues"
+  },
+  "homepage": "https://github.com/tbremer/nihilistjill.com#readme",
+  "babel": {
+    "presets": [
+      "es2015"
+    ]
+  }
+}
