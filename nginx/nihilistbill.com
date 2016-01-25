@@ -10,7 +10,13 @@ server {
 
 
   location / {
-    proxy_pass http://127.0.0.1:1337?site=bill;
+    proxy_pass http://127.0.0.1:1337;
     proxy_redirect off;
+    proxy_set_header X-Site-Name 'bill'
+    #proxy_http_version 1.1;
+    #proxy_set_header Upgrade $http_upgrade;
+    #proxy_set_header Connection 'upgrade';
+    #proxy_set_header Host $host;
+    #proxy_cache_bypass $http_upgrade;
   }
 }
