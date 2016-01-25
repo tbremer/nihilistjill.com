@@ -13,6 +13,7 @@ server {
     proxy_pass http://127.0.0.1:1337;
     proxy_redirect off;
     proxy_set_header X-Site-Name 'jill';
+
     #proxy_http_version 1.1;
     #proxy_set_header Upgrade $http_upgrade;
     #proxy_set_header Connection 'upgrade';
