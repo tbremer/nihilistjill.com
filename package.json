@@ -4,8 +4,9 @@
   "description": "nihilistjill.com",
   "main": "server.js",
   "scripts": {
-    "start": "babel-node server.js",
-    "forever": "forever start -c \"babel-node\" server.js"
+    "start": "node index.js",
+    "forever": "forever --uid 'nihilism' start index.js",
+    "forever:stop": "forever stop nihilism"
   },
   "repository": {
     "type": "git",
@@ -26,8 +27,8 @@
     ]
   },
   "devDependencies": {
-    "babel-cli": "^6.4.5",
     "babel-preset-es2015": "^6.3.13",
+    "babel-register": "^6.4.3",
     "forever": "^0.15.1"
   }
 }
