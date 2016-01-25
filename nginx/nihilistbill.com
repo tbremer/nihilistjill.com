@@ -4,9 +4,9 @@ server {
   server_name   ~nihilistbill.([0-9\.]+).xip.io
                 nihilistbill.com;
 
-  root          /var/www/nihilistbill.com;
-  access_log    /var/www/nihilistbill.com/logs/access.log;
-  error_log     /var/www/nihilistbill.com/logs/error.log;
+  root          /home/thomas/CODE/nihilistjill.com;
+  access_log    /home/thomas/CODE/nihilistjill.com/logs/access.log;
+  error_log     /home/thomas/CODE/nihilistjill.com/logs/error.log;
 
 
   location / {
