@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node index.js",
-    "forever": "forever --uid 'nihilism' start index.js",
+    "forever": "forever --append --uid 'nihilism' start index.js",
     "forever:stop": "forever stop nihilism"
   },
   "repository": {
