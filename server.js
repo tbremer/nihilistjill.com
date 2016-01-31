@@ -3,7 +3,7 @@
 import {createServer as server} from 'http';
 import {parse as urlParse} from 'url';
 
-import {home as Home, staticFiles as Assets} from './lib/routes';
+import {home as Home, staticFiles as Assets, createNihilism as FuckIt} from './lib/routes';
 import pickRoute from './lib/pick-route';
 
 const port = 1337;
@@ -12,7 +12,8 @@ server((req, res) => {
   const url = urlParse(req.url),
   Router = {
     '/': Home,
-    '/assets/(js|css)/(.+)\.(js|css)': Assets
+    '/assets/(js|css)/(.+)\.(js|css)': Assets,
+    '/fuckit': FuckIt
   };
 
   let routes = Object.keys(Router),
