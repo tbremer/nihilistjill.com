@@ -13,6 +13,8 @@ indent_style = space
 indent_size = 2
 
 #  CSS, HTML, HBS
-[*.{css, html, hbs}]
-indent_style = tab
+[*.{css}]
 indent_size = 4
+
+[*.{html, hbs}]
+indent_style = tab

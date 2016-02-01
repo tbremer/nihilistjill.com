@@ -11,9 +11,9 @@ const port = 1337;
 server((req, res) => {
   const url = urlParse(req.url),
   Router = {
-    '/': Home,
     '/assets/(js|css)/(.+)\.(js|css)': Assets,
-    '/fuckit': FuckIt
+    '/fuckit': FuckIt,
+    '/(.*?)': Home
   };
 
   let routes = Object.keys(Router),

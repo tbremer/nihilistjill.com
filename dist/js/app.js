@@ -14,6 +14,12 @@ function processNihilism(xhrData) {
   results.innerHTML = xhrData.currentTarget.response;
   console.log('processNihilism:');
   console.log(xhrData.currentTarget.response);
+
+  try {
+    history.pushState(null, null, btoa(xhrData.currentTarget.response));
+  } catch (err) {
+    location.hash = btoa(xhrData.currentTarget.response);
+  }
 }
 
 function generateStory() {
@@ -28,4 +34,5 @@ function generateStory() {
 
   xhr.addEventListener('load', processNihilism);
   xhr.open('POST', url);
-  xhr.send(dataString);}
+  xhr.send(dataString);
+}

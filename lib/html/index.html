@@ -1,32 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Nihilist ${siteName}</title>
+	<meta charset="UTF-8">
+	<title>Nihilist ${siteName}</title>
+
+	<link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    <fieldset>
-        <h1>Be like ${siteName}</h1>
-        <label>
-            <span>Your name</span>
-            <input type="text" name="name">
-        </label>
-        <label>
-            <span>Gender</span>
-            <select name="gender">
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-                <option value="trans">Trans*</option>
-                <option value="genderqueer">Gender Queer</option>
-                <option value="construct">Gender is a social construct</option>
-            </select>
-        </label>
+	<fieldset class="story-generator ${hasLoadedStory}">
+		<h1>Be like ${siteName}</h1>
+		<label>
+			<span>Your name</span>
+			<input type="text" name="name">
+		</label>
+		<label>
+			<span>Gender</span>
+			<select name="gender">
+				<option value="male">Male</option>
+				<option value="female">Female</option>
+				<option value="trans">Trans*</option>
+				<option value="genderqueer">Gender Queer</option>
+				<option value="construct">Gender is a social construct</option>
+			</select>
+		</label>
 
-        <button class="btn js-btn" data-function="generateStory">Show my story</button>
-    </fieldset>
+		<button class="btn js-btn" data-function="generateStory">Show my story</button>
+	</fieldset>
 
-    <section id="results"></section>
+	<fieldset class="story-show-hide ${hasLoadedStory}">
+		<button class="btn js-btn" data-function="showGenerator">Create Your Own Story</button>
+	</fieldset>
 
-    <script src="assets/js/app.js"></script>
+	<section id="results">${loadedStory}</section>
+
+	<script src="assets/js/app.js"></script>
 </body>
 </html>
