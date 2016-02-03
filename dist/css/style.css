@@ -53,6 +53,7 @@ body {
     text-transform: lowercase;
     padding: .3rem .7rem .5rem;
     font-size: 1.25rem;
+    font-weight: 400;
 }
 .button-primary.button-primary--margin-top { margin-top: 3%; }
 

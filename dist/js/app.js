@@ -1,39 +1,45 @@
 /* jshint unused:false*/
-/* globals CRC32 */
 'use strict';
 
-// if (/\/\w+/.test(location.pathname)) {
-//   (function() {
-//     var results = document.getElementById('results'),
-//     caption = results.querySelector('figcaption'),
-//     bill = results.querySelector('.bill'),
-//     captionHeight = caption.clientHeight,
-//     billHeight = bill.clientHeight;
+(function(history){
+    var pushState = history.pushState;
+    history.pushState = function(state) {
+        if (typeof history.onpushstate == "function") {
+            history.onpushstate({state: state});
+        }
 
-//     if (captionHeight > billHeight) {
-//       bill.style.height = captionHeight + 'px';
-//     }
-//   })();
-// }
+        return pushState.apply(history, arguments);
+    };
+})(window.history);
+
+(function() {
+  history.onpushstate = function() {
+
+  };
+})();
 
 function stringToFragment(htmlStr) {
   return document.createRange().createContextualFragment(htmlStr);
 }
 
-// function createImage(node) {
-//   var canvas = document.getElementById('image-maker'),
-//   ctx = canvas.getContext('2d');
-
-//   canvas.width = node.clientWidth;
-//   canvas.height = node.clientHeight;
-
-//   ctx.font = '30px Lato';
-//   ctx.fillText(node.textContent, 10, 50);
-// }
-
 var jsButton = [].slice.call(document.querySelectorAll('.js-btn'));
 
-jsButton.forEach(function(btn) { btn.addEventListener('click', window[btn.getAttribute('data-function')]); });
+jsButton.forEach(function(btn) {
+  var funcs = btn.dataset.function.split(',');
+
+  while (funcs.length) {
+    var func = funcs[0].trim();
+
+    btn.addEventListener('click', window[func]);
+    funcs.splice(0,1);
+  }
+});
+
+function clearPathname() {
+  if (!/^\/$/.test(location.pathname)) {
+    history.pushState(null, null, '/');
+  }
+}
 
 function toggleDynamicElements() {
   var results = document.getElementById('results'),
@@ -45,7 +51,6 @@ function toggleDynamicElements() {
   results.className = (/contains-story/.test(results.className) ? results.className.replace('contains-story', '').trim() : results.className + ' contains-story');
   share.className = (/contains-story/.test(share.className) ? share.className.replace('contains-story', '').trim() : share.className + ' contains-story');
   toggle.className = (/contains-story/.test(toggle.className) ? toggle.className.replace('contains-story', '').trim() : toggle.className + ' contains-story');
-
 }
 
 function processNihilism(xhrData) {
