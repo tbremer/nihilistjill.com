@@ -1,25 +1,46 @@
 /*jshint unused:false */
 'use strict';
 
+function stringToFragment(htmlStr) {
+  return document.createRange().createContextualFragment(htmlStr);
+}
+
+function createImage(node) {
+  var canvas = document.getElementById('image-maker'),
+  ctx = canvas.getContext('2d');
+
+  canvas.width = node.clientWidth;
+  canvas.height = node.clientHeight;
+
+  ctx.font = '30px Lato';
+  ctx.fillText(node.textContent, 10, 50);
+}
+
 var jsButton = [].slice.call(document.querySelectorAll('.js-btn'));
 
 jsButton.forEach(function(btn) { btn.addEventListener('click', window[btn.getAttribute('data-function')]); });
 
 function processNihilism(xhrData) {
-  var results = document.getElementById('results');
-  var form = document.querySelector('fieldset');
+  var results = document.getElementById('results'),
+  form = document.getElementById('story-generator'),
+  share = document.getElementById('share'),
+  responseNode = stringToFragment(xhrData.currentTarget.response),
+  responseHeight;
 
-  form.setAttribute('style', 'display: none;');
+  form.className = (/contains-story/.test(form.className) ? form.className.replace('contains-story', '').trim() : form.className + ' contains-story');
+  share.className = (/contains-story/.test(share.className) ? share.className.replace('contains-story', '').trim() : share.className + ' contains-story');
+  results.className = (/contains-story/.test(results.className) ? results.className.replace('contains-story', '').trim() : results.className + ' contains-story');
 
-  results.innerHTML = xhrData.currentTarget.response;
-  console.log('processNihilism:');
-  console.log(xhrData.currentTarget.response);
+  results.querySelector('figcaption').appendChild(responseNode);
+
+  responseHeight = results.querySelector('figcaption').clientHeight;
+  results.querySelector('.bill').setAttribute('style', 'height: ' + responseHeight + 'px');
 
   try {
     history.pushState(null, null, btoa(xhrData.currentTarget.response));
-  } catch (err) {
-    location.hash = btoa(xhrData.currentTarget.response);
-  }
+  } catch(e){}
+
+  // createImage(results);
 }
 
 function generateStory() {
