@@ -1,20 +1,32 @@
 /*jshint unused:false */
 'use strict';
 
+if (/\/\w+/.test(location.pathname)) {
+  (function() {
+    var results = document.getElementById('results'),
+    caption = results.querySelector('figcaption'),
+    bill = results.querySelector('.bill'),
+    captionHeight = caption.clientHeight;
+
+    bill.style.height = captionHeight + 'px';
+  })();
+}
+
+
 function stringToFragment(htmlStr) {
   return document.createRange().createContextualFragment(htmlStr);
 }
 
-function createImage(node) {
-  var canvas = document.getElementById('image-maker'),
-  ctx = canvas.getContext('2d');
+// function createImage(node) {
+//   var canvas = document.getElementById('image-maker'),
+//   ctx = canvas.getContext('2d');
 
-  canvas.width = node.clientWidth;
-  canvas.height = node.clientHeight;
+//   canvas.width = node.clientWidth;
+//   canvas.height = node.clientHeight;
 
-  ctx.font = '30px Lato';
-  ctx.fillText(node.textContent, 10, 50);
-}
+//   ctx.font = '30px Lato';
+//   ctx.fillText(node.textContent, 10, 50);
+// }
 
 var jsButton = [].slice.call(document.querySelectorAll('.js-btn'));
 
