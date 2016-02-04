@@ -4,7 +4,7 @@
 (function(history){
     var pushState = history.pushState;
     history.pushState = function(state) {
-        if (typeof history.onpushstate == "function") {
+        if (typeof history.onpushstate === 'function') {
             history.onpushstate({state: state});
         }
 
@@ -19,7 +19,17 @@
 })();
 
 function stringToFragment(htmlStr) {
-  return document.createRange().createContextualFragment(htmlStr);
+  var fragment;
+  try {
+    fragment = document.createRange().createContextualFragment(htmlStr);
+  } catch (err) {
+    var temp = document.createElement('div');
+
+    temp.innerHTML = htmlStr;
+    fragment = temp.firstChild;
+  }
+
+  return  fragment;
 }
 
 var jsButton = [].slice.call(document.querySelectorAll('.js-btn'));
@@ -56,7 +66,8 @@ function toggleDynamicElements() {
 function processNihilism(xhrData) {
   var results = document.getElementById('results'),
   responseNode = stringToFragment(xhrData.currentTarget.response),
-  caption = results.querySelector('figcaption');
+  caption = results.querySelector('figcaption'),
+  fbMeta;
 
   while (caption.lastChild) { caption.removeChild(caption.lastChild); }
 
@@ -66,9 +77,11 @@ function processNihilism(xhrData) {
     history.pushState(null, null, btoa(xhrData.currentTarget.response));
   } catch(e){}
 
-  toggleDynamicElements.call();
+  fbMeta = document.head.children.item(3);
 
-  // createImage(results);
+  fbMeta.setAttribute('content', '//' + location.host + 'image' + btoa(xhrData.currentTarget.response));
+
+  toggleDynamicElements.call();
 }
 
 function generateStory() {
