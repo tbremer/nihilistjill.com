@@ -73,13 +73,13 @@ function toggleDynamicElements() {
 
 function processNihilism(xhrData) {
   var results = document.getElementById('results'),
-  responseNode = stringToFragment(xhrData.currentTarget.response),
+  responseNode = xhrData.currentTarget.response,
   caption = results.querySelector('figcaption'),
   fbMeta;
 
   while (caption.lastChild) { caption.removeChild(caption.lastChild); }
 
-  caption.appendChild(responseNode);
+  caption.innerHTML = responseNode;
 
   try {
     history.pushState(null, null, btoa(xhrData.currentTarget.response));
