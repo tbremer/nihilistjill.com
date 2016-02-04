@@ -110,10 +110,8 @@ footer {
 
 #results figcaption,
 #results .bill {
-    display: inline-block;
-    vertical-align: top;
     text-align: left;
 }
 
-#results figcaption { font-size: 1.5rem; font-weight: 700; line-height: 1.5;}
+#results figcaption { width: 70%; float: left; font-size: 1.5rem; font-weight: 700; line-height: 1.5;}
 #results .bill { height: 300px; margin-left: 3%; }
