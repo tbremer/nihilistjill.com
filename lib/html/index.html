@@ -6,7 +6,7 @@
 	<meta property="og:url" content="${pageUrl}" />
 	<meta property="og:title" content="Nihilist ${siteName}" />
 	<meta property="og:image" content="${ogImage}" />
-	<meta property="fb:app_id" content="900042220102582" />
+	<meta property="fb:app_id" content="${appId}" />
 
 	<title>Nihilist ${siteName}</title>
 
@@ -17,7 +17,7 @@
 	<script>
 		window.fbAsyncInit = function() {
 			FB.init({
-				appId      : '900042220102582',
+				appId      : '${appId}',
 				xfbml      : true,
 				version    : 'v2.5'
 			});
