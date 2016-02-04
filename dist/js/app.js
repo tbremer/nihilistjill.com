@@ -51,6 +51,14 @@ function clearPathname() {
   }
 }
 
+function shareStory() {
+  var url = location.host + '/' + location.pathname;
+  FB.ui({
+    method: 'share',
+    href: url,
+  }, function(response){});
+}
+
 function toggleDynamicElements() {
   var results = document.getElementById('results'),
   form = document.getElementById('story-generator'),
@@ -79,7 +87,7 @@ function processNihilism(xhrData) {
 
   fbMeta = document.head.children.item(3);
 
-  fbMeta.setAttribute('content', '//' + location.host + 'image' + btoa(xhrData.currentTarget.response));
+  fbMeta.setAttribute('content', '//' + location.host + 'images' + btoa(xhrData.currentTarget.response));
 
   toggleDynamicElements.call();
 }

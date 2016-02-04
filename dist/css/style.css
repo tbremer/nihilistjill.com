@@ -75,9 +75,6 @@ body {
     display: none;
 }
 
-#share {display: none !important;}
-
-
 #results.contains-story,
 #story-show-hide.contains-story,
 #share.contains-story {
