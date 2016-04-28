@@ -1,6 +1,6 @@
 {
   "name": "nihilistjill.com",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "nihilistjill.com",
   "main": "server.js",
   "scripts": {
