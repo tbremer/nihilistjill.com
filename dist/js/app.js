@@ -87,7 +87,7 @@ function processNihilism(xhrData) {
 
   fbMeta = document.head.children.item(3);
 
-  fbMeta.setAttribute('content', '//' + location.host + 'images' + btoa(xhrData.currentTarget.response));
+  fbMeta.setAttribute('content', '//' + location.host + '/images/' + btoa(xhrData.currentTarget.response));
 
   toggleDynamicElements.call();
 }
